@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #000000;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .list-group-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      word-wrap: break-word;
+    }
+
+    .task-text {
+      flex-grow: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    .form-control-sm {
+      width: auto;
+    }
+
+    .task-button,
+    .btn-warning,
+    .btn-danger {
+      min-width: 90px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 10px 15px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #007bff;
+      color: #ffffff !important;
+      border: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .btn-complete {
+      background-color: #28a745;
+      color: #ffffff !important;
+      border: none;
+    }
+
+    .btn-complete:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    .btn-incomplete {
+      background-color: #dc3545;
+      color: #ffffff !important;
+      border: none;
+    }
+
+    .btn-incomplete:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+      color: #ffffff !important;
+    }
+
+    .btn-warning:hover {
+      background-color: #e0a800;
+      transform: scale(1.05);
+    }
+
+    .btn-warning:focus,
+    .btn-warning:active {
+      color: #ffffff !important;
+      background-color: #e0a800;
+      box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      color: #ffffff !important;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
+    }
+
+    .btn {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="my-4">Gerenciador de Tarefas</h1>
+
+    <!-- Formulário para adicionar nova tarefa -->
+    <form action="/tasks" method="POST" class="mb-4">
+      <div class="form-group">
+        <input type="text" name="task" class="form-control" placeholder="Nova Tarefa" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Adicionar Tarefa</button>
+    </form>
+
+    <!-- Lista de tarefas -->
+    <ul class="list-group">
+      {{#each tasks}}
+        <li class="list-group-item">
+          <span class="task-text">{{this.task}}</span>
+
+          <!-- Botão para marcar como completo ou desmarcar -->
+          <form action="/tasks/complete" method="POST" class="d-inline">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button type="submit" class="btn btn-sm task-button {{#if this.completed}}btn-incomplete{{else}}btn-complete{{/if}}">
+              {{#if this.completed}}Desmarcar{{else}}Completar{{/if}}
+            </button>
+          </form>
+
+          <!-- Formulário para editar a tarefa -->
+          <form action="/tasks/edit" method="POST" class="d-inline">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="text" name="task" value="{{this.task}}" class="form-control-sm d-inline" required>
+            <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+          </form>
+
+          <!-- Formulário para deletar a tarefa -->
+          <form action="/tasks/delete" method="POST" class="d-inline">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+          </form>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <!-- Scripts para funcionar no mobile -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/login.css">
+
+<!-- título da página -->
+<title>Criar Conta</title>
+
+<!-- container -->
+<div class="container">
+    <div class="row">
+        <div class="col col-login">
+            <h2>Bem-Vindo ao TaskEdu!</h2>
+            <p>Crie uma conta para gerenciar suas tarefas.</p>
+
+            <form action="/criarConta" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" name="senha" required>
+                </div>
+
+                {{#if error}}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {{/if}}
+
+                <p>Já possui uma conta? <a href="/">Fazer Login</a></p>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5 btn-entrar">Criar Conta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/login.css">
+
+<!-- título da página -->
+<title>Login</title>
+
+<!-- container -->
+<div class="container">
+    <div class="row">
+        <div class="col col-login">
+            <h2>TaskEdu
+                <ion-icon name="receipt-outline"></ion-icon>
+            </h2>
+            <p>Faça login para entrar na sua conta</p>
+
+            <form action="/fazerLogin" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control input" id="senha" name="senha" required>
+                </div>
+
+                {{#if error}}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {{/if}}
+
+                <p>Ainda não possui uma conta? <a href="/criarConta">Criar Conta</a></p>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5 btn-entrar">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

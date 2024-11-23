@@ -1,0 +1,58 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/consultar.css">
+
+<!-- título da página -->
+<title>Consultar Tarefas</title>
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+        <div class="col text-center text-white">
+            <h2 class="mb-4">GERENCIADOR DE TAREFAS</h2>
+        </div>
+
+        <div class="d-grid gap-2">
+            <a href="/criarTarefa" class="btn btn-primary mb-3 btn-adicionar">Adicionar Tarefas</a>
+        </div>
+
+        <div class="mb-3">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nome Tarefa</th>
+                            <th scope="col">Data Início</th>
+                            <th scope="col">Data Fechamento</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each tarefas}}
+                        <tr>
+                            <td>{{increment @index}}</td>
+                            <td>{{this.nome_da_tarefa}}</td>
+                            <td>{{this.data_de_inicio}}</td>
+                            <td>{{this.data_de_fechamento}}</td>
+                            <td>{{this.descricao}}</td>
+                            <td>
+                                <a href="/alterarTarefa/{{this.id}}" class="btn btn-primary btn-sm">Editar</a>
+                                <form action="/removerTarefa/{{this.id}}" method="POST" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td colspan="6" class="text-center">Nenhuma tarefa encontrada.</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

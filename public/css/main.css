@@ -1,0 +1,53 @@
+:root{
+    --color-1: #0E073D;
+    --color-2: #31227C;
+    --color-3: #85C8E4;
+    --color-4: #1E1E1E;
+    --color-5: #797979;
+    --color-fundo: #EFEFEF;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(to bottom, var(--color-2), var(--color-3));
+}
+
+/* container */
+    .container{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* navbar */
+    .navbar{
+        background-color: var(--color-1);
+        color: white;
+    }
+
+    .offcanvas-header{
+        background-color: var(--color-1);
+        color: var(--color-fundo);
+    }
+
+    .nav-item:hover{
+        background-color: #eeeeee;
+        font-weight: 500;
+    }
+
+  
+
+/* title */
+    h2{
+        font-size: 1.6rem;
+    }
+
+/* forms */
+    .form-control{
+        border: 0.1vh solid rgba(25, 57, 105, 0.548);
+    }

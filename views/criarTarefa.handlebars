@@ -1,0 +1,39 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/cadastrar.css">
+
+<!-- título da página -->
+<title>Cadastro de Tarefa</title>
+
+<!-- container -->
+<div class="container">
+
+    <div class="row">
+        <div class="col col-cadastro">
+
+            <h2 class="text-center mb-3 mt-2">Adicionar Tarefa</h2>
+
+            <form action="/criarTarefa" method="POST" class="row g-3">
+                <div class="col-12">
+                    <label for="nome" class="form-label">Nome da tarefa:</label>
+                    <input type="text" name="nome_da_tarefa" class="form-control" id="nome">
+                </div>
+                <div class="col-md-6">
+                    <label for="data-inicio" class="form-label">Data de início:</label>
+                    <input type="date" name="data_de_inicio" class="form-control" id="data-inicio">
+                </div>
+                <div class="col-md-6">
+                    <label for="data-fechamento" class="form-label">Data de fechamento:</label>
+                    <input type="date" name="data_de_fechamento" class="form-control" id="data-fechamento">
+                </div>
+                <div class="col-12">
+                    <label for="descricao" class="form-label">Descrição:</label>
+                    <textarea name="descricao" class="form-control" id="descricao" rows="3"></textarea>
+                </div>
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

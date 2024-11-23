@@ -1,0 +1,59 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/cadastrar.css">
+
+<!-- título da página -->
+<title>Editar Tarefa</title>
+
+<!-- container -->
+<div class="container">
+    <div class="row">
+        <div class="col col-cadastro">
+            <h2 class="text-center mb-3 mt-2">Editar Tarefa</h2>
+
+            <form class="row g-3" action="/alterarTarefa/{{id}}" method="POST">
+                <div class="col-12">
+                    <label for="nome" class="form-label">Nome da tarefa:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="nome" 
+                        name="nome_da_tarefa" 
+                        value="{{tarefa.nome_da_tarefa}}" 
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="data-inicio" class="form-label">Data de início:</label>
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        id="data-inicio" 
+                        name="data_de_inicio" 
+                        value="{{tarefa.data_de_inicio}}" 
+                        required>
+                </div>
+                <div class="col-md-6">
+                    <label for="data-fechamento" class="form-label">Data de fechamento:</label>
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        id="data-fechamento" 
+                        name="data_de_fechamento" 
+                        value="{{tarefa.data_de_fechamento}}" 
+                        required>
+                </div>
+                <div class="col-12">
+                    <label for="descricao" class="form-label">Descrição:</label>
+                    <textarea 
+                        class="form-control" 
+                        id="descricao" 
+                        name="descricao" 
+                        rows="3" 
+                        required>{{tarefa.descricao}}</textarea>
+                </div>
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-primary">Concluir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

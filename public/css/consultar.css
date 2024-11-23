@@ -1,0 +1,57 @@
+/* Resetando margens e padding para evitar quebras no layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Impede o overflow horizontal */
+}
+
+/* Container */
+.container {
+    margin-top: 10vh;
+    padding-bottom: 2rem; /* Ajuste o espaço inferior para não cortar conteúdo */
+}
+
+/* Estilo da tabela */
+.table {
+    border: 0.1vh solid var(--color-1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.39);
+    width: 100%; /* Garante que a tabela ocupe o espaço disponível */
+    table-layout: fixed; /* Força a tabela a usar largura fixa para as colunas */
+}
+
+.table th, .table td {
+    padding: 1rem; /* Para um espaçamento adequado dentro das células */
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Cabeçalhos da tabela */
+.table th {
+    background-color: var(--color-3);
+}
+
+/* Células da tabela */
+.table td {
+    background-color: var(--color-fundo);
+}
+
+/* Botões */
+.btn-adicionar {
+    border: 0.1vh solid var(--color-2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #0000FF; /* Azul puro */
+    color: #fff; /* Garantir que o texto do botão seja visível */
+}
+
+.btn-adicionar:hover {
+    font-weight: 500;
+    background-color: rgb(4, 4, 199);
+}
+
+/* Garantir que o conteúdo dentro da célula da tabela se ajuste corretamente */
+td {
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-word; /* Força a quebra de palavras longas */
+}
